@@ -16,6 +16,14 @@ function findMissingNumber(array,n){
         }
     }
 }
+function findMissingNumber2(array,n){
+    let expSum=n*(n+1)/2
+    let sum=0
+    for(let x=0;x<array.length;x++){
+        sum+=array[x]
+    }
+    return expSum-sum
+}
 
 let q2a1=[1,5,2,7]
 let q2a2=[20,1,5,2,11]
@@ -36,18 +44,20 @@ function indiceAdd(array,target){
 
 function generatePermutation(str){
     
-    
+    let resultArr=[]
     for(let x=0;x<str.length;x++){
-        
+        resultArr.concat(permutation(str,x,0))
     }
     console.log(returnArr)
 
 }
 function permutation(str,x,y){
     if(y>=str.length){
-        return str
+        return [str]
     }
+    let strArr=str.split()
 
+    
 
 }
 
@@ -93,8 +103,25 @@ function checkIfCycleExists(node){
     }
     return false
 }
-
 function checkIfValdidParenthesis(str){
+    let stack=[]
+    let map={
+        "(":")",
+        "{":"}",
+        "[":"]"
+    }
+    for(let x=0;x<str.length;x++){
+        if (str[x] === '(' || str[x] === '[' || str[x] === '{'){
+            stack.push[str[x]]
+        }else{
+            if(str[x]!== map[stack.pop()]){
+                return false
+            }
+        }
+    }
+    return stack.length === 0
+}
+function checkIfValdidParenthesis2(str){
     let current = 0
     let notInvalid=true
     while(current<str.length && notInvalid){
@@ -107,6 +134,7 @@ function checkIfValdidParenthesis(str){
             }
             
         }
+        current++
     }
     return notInvalid
 }
